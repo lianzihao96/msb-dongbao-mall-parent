@@ -16,6 +16,14 @@ public class UserMemberTest {
     private UmsMemberMapper umsMemberMapper;
 
     @Test
+    public void updateTest(){
+        UmsMember umsMember = new UmsMember();
+        umsMember.setId(8L);
+
+        umsMemberMapper.updateById(umsMember);
+    }
+
+    @Test
     public void testInsert(){
         UmsMember umsMember = new UmsMember();
         umsMember.setUsername("张三123");

@@ -1,9 +1,13 @@
 package com.msb.dongbao.ums.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -57,9 +61,11 @@ public class UmsMember implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    @TableField(fill = FieldFill.INSERT)
+    private Date gmtCreate;
 
-    private LocalDateTime updateTime;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date gmtModified;
 
     /**
      * 最后登录时间
