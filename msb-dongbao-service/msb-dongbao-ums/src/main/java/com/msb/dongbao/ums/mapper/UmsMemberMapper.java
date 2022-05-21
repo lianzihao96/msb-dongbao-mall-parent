@@ -1,7 +1,7 @@
 package com.msb.dongbao.ums.mapper;
 
-import com.msb.dongbao.ums.entity.UmsMember;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.msb.dongbao.ums.entity.UmsMember;
 import org.springframework.stereotype.Repository;
 
 /**
