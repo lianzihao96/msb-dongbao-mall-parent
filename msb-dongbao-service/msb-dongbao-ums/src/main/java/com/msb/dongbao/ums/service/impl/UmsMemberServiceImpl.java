@@ -7,6 +7,7 @@ import com.msb.dongbao.ums.mapper.UmsMemberMapper;
 import com.msb.dongbao.ums.service.UmsMemberService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -27,6 +28,10 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
     public String register(UmsMemberRegisterParamDTO umsMemberRegisterParamDTO){
         UmsMember umsMember = new UmsMember();
         BeanUtils.copyProperties(umsMemberRegisterParamDTO,umsMember);
+        //密码加密
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String encode = bCryptPasswordEncoder.encode(umsMemberRegisterParamDTO.getPassword());
+        umsMember.setPassword(encode);
         umsMemberMapper.insert(umsMember);
         return "success";
     };
