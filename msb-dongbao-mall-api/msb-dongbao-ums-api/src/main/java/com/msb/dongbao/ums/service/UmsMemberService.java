@@ -2,6 +2,7 @@ package com.msb.dongbao.ums.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.msb.dongbao.ums.entity.UmsMember;
+import com.msb.dongbao.ums.entity.dto.UmsMemberRegisterParamDTO;
 
 /**
  * <p>
@@ -13,5 +14,5 @@ import com.msb.dongbao.ums.entity.UmsMember;
  */
 public interface UmsMemberService extends IService<UmsMember> {
 
-    public String register();
+    public String register(UmsMemberRegisterParamDTO umsMemberRegisterParamDTO);
 }
