@@ -2,6 +2,7 @@ package com.msb.dongbao.ums.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.msb.dongbao.ums.entity.UmsMember;
+import com.msb.dongbao.ums.entity.dto.UmsMemberLoginParamDTO;
 import com.msb.dongbao.ums.entity.dto.UmsMemberRegisterParamDTO;
 import com.msb.dongbao.ums.mapper.UmsMemberMapper;
 import com.msb.dongbao.ums.service.UmsMemberService;
@@ -25,14 +26,31 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
     @Autowired
     private UmsMemberMapper umsMemberMapper;
 
+    //密码加密
+    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
     public String register(UmsMemberRegisterParamDTO umsMemberRegisterParamDTO){
         UmsMember umsMember = new UmsMember();
         BeanUtils.copyProperties(umsMemberRegisterParamDTO,umsMember);
-        //密码加密
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String encode = bCryptPasswordEncoder.encode(umsMemberRegisterParamDTO.getPassword());
         umsMember.setPassword(encode);
         umsMemberMapper.insert(umsMember);
         return "success";
-    };
+    }
+
+    @Override
+    public String login(UmsMemberLoginParamDTO umsMemberLoginParamDTO) {
+        UmsMember umsMember = umsMemberMapper.selectByName(umsMemberLoginParamDTO.getUsername());
+        if (umsMember != null ){
+            String passwordDb = umsMember.getPassword();
+
+            if (!bCryptPasswordEncoder.matches(umsMemberLoginParamDTO.getPassword(),passwordDb)){
+                return "密码不正确";
+            }
+         }else {
+            return "用户不存在!";
+        }
+        System.out.println("登录成功");
+        return "token";
+    }
 }

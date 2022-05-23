@@ -6,6 +6,10 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   profiles:
     active: dev
+  security:
+    user:
+      name: root
+      password: 123
 
 mybatis-plus:
   configuration:
