@@ -14,4 +14,4 @@ mybatis-plus:
     db-config:
       logic-delete-value: 1
       logic-not-delete-value: 0
-  mapper-locations: classpath*:/mapper/**Mapper.xml #扫描xml文件
+  mapper-locations: classpath*:/com/msb/dongbao/ums/mapper/xml/*.xml
