@@ -1,6 +1,7 @@
 package com.msb.dongbao.ums.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.msb.dongbao.common.JwtUtil;
 import com.msb.dongbao.ums.entity.UmsMember;
 import com.msb.dongbao.ums.entity.dto.UmsMemberLoginParamDTO;
 import com.msb.dongbao.ums.entity.dto.UmsMemberRegisterParamDTO;
@@ -50,7 +51,9 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
          }else {
             return "用户不存在!";
         }
+
+        String token = JwtUtil.createToken(umsMember.getUsername());
         System.out.println("登录成功");
-        return "token";
+        return token;
     }
 }

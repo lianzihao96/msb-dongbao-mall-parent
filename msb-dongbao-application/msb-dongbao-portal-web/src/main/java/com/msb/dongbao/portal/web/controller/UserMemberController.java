@@ -1,5 +1,6 @@
 package com.msb.dongbao.portal.web.controller;
 
+import com.msb.dongbao.common.JwtUtil;
 import com.msb.dongbao.common.base.result.ResultWrapper;
 import com.msb.dongbao.ums.entity.dto.UmsMemberLoginParamDTO;
 import com.msb.dongbao.ums.entity.dto.UmsMemberRegisterParamDTO;
@@ -32,5 +33,9 @@ public class UserMemberController {
         return umsMemberService.login(umsMemberLoginParamDTO);
     }
 
-
+    @GetMapping("/test-verify")
+    public String verify(String token){
+        String s = JwtUtil.parseToken(token);
+        return s;
+    }
 }
