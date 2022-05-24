@@ -2,6 +2,7 @@ package com.msb.dongbao.portal.web.controller;
 
 import com.msb.dongbao.common.JwtUtil;
 import com.msb.dongbao.common.base.result.ResultWrapper;
+import com.msb.dongbao.ums.entity.UmsMember;
 import com.msb.dongbao.ums.entity.dto.UmsMemberLoginParamDTO;
 import com.msb.dongbao.ums.entity.dto.UmsMemberRegisterParamDTO;
 import com.msb.dongbao.ums.service.UmsMemberService;
@@ -24,18 +25,22 @@ public class UserMemberController {
 
     @PostMapping("/register")
     public ResultWrapper register(@RequestBody @Valid UmsMemberRegisterParamDTO umsMemberRegisterParamDTO){
-        umsMemberService.register(umsMemberRegisterParamDTO);
-        return ResultWrapper.getSuccessBuilder().data(null).build();
+        return umsMemberService.register(umsMemberRegisterParamDTO);
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody UmsMemberLoginParamDTO umsMemberLoginParamDTO){
+    public ResultWrapper login(@RequestBody UmsMemberLoginParamDTO umsMemberLoginParamDTO){
         return umsMemberService.login(umsMemberLoginParamDTO);
     }
 
+    @PostMapping("/edit")
+    public ResultWrapper edit(@RequestBody UmsMember umsMember){
+        return umsMemberService.edit(umsMember);
+    }
+
     @GetMapping("/test-verify")
-    public String verify(String token){
-        String s = JwtUtil.parseToken(token);
-        return s;
+    public ResultWrapper verify(String token){
+        System.out.println("正常业务");
+        return ResultWrapper.getSuccessBuilder().build();
     }
 }
