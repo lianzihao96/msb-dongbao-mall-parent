@@ -16,7 +16,7 @@ public class ClobalExceptionHandle {
     //自定义token异常处理
     @ExceptionHandler(TokenException.class)
     public ResultWrapper tokenException(Exception e){
-        return ResultWrapper.getFailBuilder().msg(e.getMessage()).build();
+        return ResultWrapper.getFailBuilder().code(501).msg(e.getMessage()).build();
     }
 }
 
