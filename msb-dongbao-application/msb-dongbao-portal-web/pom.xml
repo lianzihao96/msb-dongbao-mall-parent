@@ -16,8 +16,65 @@
 
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.ramostear</groupId>-->
+<!--            <artifactId>Happy-Captcha</artifactId>-->
+<!--            <version>1.0.1</version></dependency>-->
+<!--        <dependency>-->
+<!--            -->
+<!--            -->
+<!--            <groupId>com.github.whvcse</groupId>-->
+<!--            <artifactId>easy-captcha</artifactId>-->
+<!--            <version>1.6.2</version>-->
+<!--        </dependency>-->
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>5.3.2.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>5.3.2.RELEASE</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j -->
+        <!--光学识别-->
+        <!--光学识别 OCR-->
+        <dependency>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>4.5.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.octo.captcha</groupId>
+            <artifactId>jcaptcha</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.msb</groupId>
+            <artifactId>msb-dongbao-common-base</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>net.sourceforge.tess4j</groupId>
             <artifactId>tess4j</artifactId>
@@ -35,60 +92,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.msb</groupId>-->
-<!--            <artifactId>msb-dongbao-pms</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.msb</groupId>-->
-<!--            <artifactId>msb-dongbao-common-base</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.msb</groupId>-->
-<!--            <artifactId>msb-dongbao-common-util</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.msb</groupId>-->
-<!--            <artifactId>msb-dongbao-job</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.msb</groupId>-->
-<!--            <artifactId>msb-dongbao-cart</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
-
         <dependency>
             <groupId>com.msb</groupId>
             <artifactId>msb-dongbao-ums</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.msb</groupId>-->
-<!--            <artifactId>msb-dongbao-sms</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.msb</groupId>-->
-<!--            <artifactId>msb-dongbao-oms</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.msb</groupId>-->
-<!--            <artifactId>msb-dongbao-pay</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
-
 
         <!-- swagger 依赖  START -->
         <dependency>
@@ -134,7 +142,6 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -146,18 +153,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.session</groupId>-->
-<!--            <artifactId>spring-session-data-redis</artifactId>-->
-<!--            <version>2.2.0.RELEASE</version>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -181,82 +176,17 @@
             <version>4.5.13</version>
         </dependency>
 
-        <!--        <dependency>-->
-<!--            <groupId>org.redisson</groupId>-->
-<!--            <artifactId>redisson</artifactId>-->
-<!--            <version>3.8.2</version>-->
-<!--        </dependency>-->
-
     </dependencies>
-
-    <profiles>
-        <profile>
-            <!-- 本地开发环境 -->
-            <id>dev</id>
-            <properties>
-                <profiles.active>dev</profiles.active>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-
-        <profile>
-            <!-- 测试环境 -->
-            <id>test</id>
-            <properties>
-                <profiles.active>test</profiles.active>
-            </properties>
-        </profile>
-
-        <profile>
-            <!-- 生产环境 -->
-            <id>prod</id>
-            <properties>
-                <profiles.active>prod</profiles.active>
-            </properties>
-        </profile>
-    </profiles>
+    <!--忘记=忘了 再记。-->
 
 
     <build>
-        <finalName>${project.name}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
-                <!--使用默认的变量分割符即${}-->
-                <configuration>
-                    <useDefaultDelimiters>true</useDefaultDelimiters>
-                </configuration>
-            </plugin>
-        </plugins>
-
-        <!-- 测试文件的编译路径设置 -->
-        <testResources>
-            <testResource>
-                <!--这里是关键！ 根据不同的环境，把对应文件夹里的配置文件打包-->
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>application.yml</include>
-                </includes>
-                <filtering>true</filtering>
-            </testResource>
-
-            <testResource>
-                <!--这里是关键！ 根据不同的环境，把对应文件夹里的配置文件打包-->
-                <directory>src/main/resources/${profiles.active}</directory>
-                <includes>
-                    <include>**/*.yml</include>
-                </includes>
-                <filtering>false</filtering>
-            </testResource>
-        </testResources>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
 
         <resources>
             <resource>
@@ -268,32 +198,6 @@
                 <!-- 启用过滤 即该资源中的变量将会被过滤器中的值替换 -->
                 <filtering>true</filtering>
             </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*.*</include>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-            <resource>
-                <!-- ${profiles.active}由profile提供 -->
-                <directory>src/main/resources/${profiles.active}</directory>
-                <includes>
-                    <include>**/*.yml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-
         </resources>
-
-        <!-- 定义 filter,即该资源中的值将会用来替换同名属性（设置 filtering 为 true 的资源中的属性）-->
-        <filters>
-            <filter>
-                src/main/resources/${profiles.active}/application-${profiles.active}.yml
-            </filter>
-        </filters>
     </build>
-
 </project>
